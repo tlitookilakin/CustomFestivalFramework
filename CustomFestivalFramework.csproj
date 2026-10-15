@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<AssemblyName>CustomFestivalFramework</AssemblyName>
+		<RootNamespace>CustomFestivalFramework</RootNamespace>
+		<TargetFramework>net6.0</TargetFramework>
+		<EnableHarmony>true</EnableHarmony>
+		<LangVersion>Latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>true</ImplicitUsings>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Name>Custom Festival Framework</Name>
+		<Authors>Tlitookilakin</Authors>
+		<UniqueId>tlitookilakin.FestivalFramework</UniqueId>
+		<Description>A code framework to make it easier to add custom festivals.</Description>
+		<Version>1.0.0</Version>
+		<UpdateKeys></UpdateKeys>
+		<MinimumApiVersion_Behavior>Update</MinimumApiVersion_Behavior>
+		<BaseManifest>new</BaseManifest>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Leclair.Stardew.ModManifestBuilder" Version="2.4.1" />
+		<PackageReference Include="Pathoschild.Stardew.ModBuildConfig" Version="4.4.0" />
+		<PackageReference Include="tlitookilakin.StarModGen" Version="0.2.8" ExcludeAssets="runtime" />
+	</ItemGroup>
+</Project>
