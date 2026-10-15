@@ -91,7 +91,7 @@ namespace CustomFestivalFramework.Framework
 			activeHandler.Value = null;
 		}
 
-		internal static void DoRewards(string[] args)
-			=> Handler?.GiveRewards(args);
+		internal static bool DoRewards(string[] args)
+			=> Handler is not IFestivalAPI.IFestivalHandler handler || handler.GiveRewards(args);
 	}
 }

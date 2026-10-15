@@ -18,7 +18,7 @@ internal class EventPatcher
 	{
 		harmony
 			.With(typeof(Event.DefaultCommands), nameof(Event.DefaultCommands.Cutscene)).Transpiler(InjectCutscene)
-			.With(nameof(Event.DefaultCommands.AwardFestivalPrize)).Postfix(HandleReward)
+			.With(nameof(Event.DefaultCommands.AwardFestivalPrize)).Prefix(HandleReward)
 			.With<Event>(nameof(Event.answerDialogueQuestion)).Prefix(HandleAnswer)
 			.With(nameof(Event.forceFestivalContinue)).Prefix(HandleFestivalContinue)
 			.With(nameof(Event.checkAction)).Postfix(HandleAction)
@@ -28,9 +28,6 @@ internal class EventPatcher
 			.With(nameof(Event.festivalUpdate)).Postfix(HandleUpdate)
 			.With(nameof(Event.exitEvent)).Postfix(HandleEnd);
 	}
-
-	private static void PatchWith(Harmony harmony, string target, string patch)
-		=> harmony.Patch(typeof(Event).GetMethod(target), postfix: new(typeof(EventPatcher), patch));
 
 	private static IEnumerable<CodeInstruction> InjectCutscene(IEnumerable<CodeInstruction> source, ILGenerator gen)
 	{
@@ -78,7 +75,7 @@ internal class EventPatcher
 	private static void HandleEnd()
 		=> Manager.End();
 
-	private static void HandleReward(string[] args)
+	private static bool HandleReward(string[] args)
 		=> Manager.DoRewards(args[1..]);
 
 	private static bool HandleFestivalContinue()

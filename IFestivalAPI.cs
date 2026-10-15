@@ -57,7 +57,7 @@ public interface IFestivalAPI
 		public bool MainEventSetup() => true;
 
 		/// <summary>Use to provide rewards to the current player. Called when the AwardFestivalPrize command is used.</summary>
-		public void GiveRewards(string[] args) { }
+		public bool GiveRewards(string[] args) => true;
 
 		/// <summary>Use to handle custom (hardcoded) cutscenes. Called when the Cutscene command is used.</summary>
 		/// <returns>True if the cutscene of the given name was handled.</returns>
